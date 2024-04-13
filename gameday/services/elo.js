@@ -9,7 +9,7 @@ class Team {
 // Function to initialize Elo rating for a team
 function initializeElo(team) {
     if (team.eloRating === null || team.eloRating === undefined) {
-        team.eloRating = 1500;
+        team.eloRating = 200;
     }
 }
 
@@ -25,8 +25,16 @@ function updateElo(teamA, teamB, outcome) {
 
     console.log(`Before update: Team A Elo: ${teamA.eloRating}, Team B Elo: ${teamB.eloRating}`);
 
+    // Set initial Elo rating if team's Elo is 200 (no games played or new team)
+    if (teamA.eloRating === 200) teamA.eloRating = 1500;
+    if (teamB.eloRating === 200) teamB.eloRating = 1500;
+
+    // Adjusted significant difference values for Elo rating of 200
+    const significantlyHigher = 800; // Adjusted from 400
+    const significantlySimilar = 300; // Adjusted from 100
+
     // Case 1: Team A eloRating is significantly higher than Team B eloRating
-    if (eloDifference > 400) { 
+    if (eloDifference > significantlyHigher) { 
         switch (outcome) {
             // Team A wins
             case 'win': 
@@ -48,7 +56,7 @@ function updateElo(teamA, teamB, outcome) {
         }
     }
     // Case 2: Team A eloRating and Team B eloRating are significantly similar
-    else if (eloDifference <= 400 && eloDifference >= 100) { 
+    else if (eloDifference <= significantlyHigher && eloDifference >= significantlySimilar) { 
         switch (outcome) {
             // Team A wins
             case 'win':
