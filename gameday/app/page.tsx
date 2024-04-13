@@ -8,7 +8,7 @@ const ProfilePage = dynamic(() => import('./profile/page').catch(error => {
   return () => <div>Error loading ProfilePage. Please try again later.</div>;
 }), { ssr: false });
 
-export default function Home() {
+const Home: React.FC = () => { // Define Home component
   return (
     <main className="flex min-h-screen flex-col items-center justify-between p-24">
       <h1>Welcome to GameDay!</h1>
@@ -16,13 +16,14 @@ export default function Home() {
       <nav className="mt-8">
         <ul className="flex space-x-4">
           <li>
-          <Link href="/profile" passHref>
-            Profile
-          </Link>
+            <Link href="/profile" passHref>
+              Profile
+            </Link>
           </li>
         </ul>
       </nav>
-      <ProfilePage />
     </main>
   );
 }
+
+export default Home;
