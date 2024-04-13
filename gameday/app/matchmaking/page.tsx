@@ -8,6 +8,16 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
+import {
+  Drawer,
+  DrawerClose,
+  DrawerContent,
+  DrawerDescription,
+  DrawerFooter,
+  DrawerHeader,
+  DrawerTitle,
+  DrawerTrigger,
+} from "@/components/ui/drawer"
 
 interface Opponent {
   name: string;
@@ -45,6 +55,21 @@ export default function Matchmaking() {
           Using our ELO system we'll find teams in the same location and set a date and time
         </p>
       </div>
+      <div>
+          <Drawer>
+      <DrawerTrigger>Rank Explanation</DrawerTrigger>
+      <DrawerContent>
+        <DrawerHeader>
+          <DrawerTitle>Are you absolutely sure?</DrawerTitle>
+          <DrawerDescription>This action cannot be undone.</DrawerDescription>
+        </DrawerHeader>
+        <DrawerFooter>
+          <DrawerClose>
+          </DrawerClose>
+        </DrawerFooter>
+      </DrawerContent>
+      </Drawer>
+      </div>
       <div className="w-full max-w-6xl mx-auto">
         <h2 className="text-3xl font-bold tracking-tight text-center mb-8">Your Stats</h2>
         <div className='mb-7'>
@@ -60,7 +85,6 @@ export default function Matchmaking() {
             <CardDescription>YOURSPORT</CardDescription>
           </CardHeader>
         </Card>
-
         </div>
         <h2 className="text-3xl font-bold tracking-tight text-center mb-8">Matches</h2>
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
