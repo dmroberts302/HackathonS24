@@ -3,54 +3,53 @@ import {
   TableBody,
   TableCaption,
   TableCell,
-  TableFooter,
   TableHead,
   TableHeader,
   TableRow,
 } from "@/components/ui/table"
  
-const invoices = [
+const players = [
   {
-    Username: "INV001",
-    Sport: "Paid",
-    Team: "$250.00",
+    Username: "dmr019",
+    Sport: "Soccer",
+    Team: "Onside",
     Badge: "PICTURE",
   },
   {
-    Username: "INV001",
-    Sport: "Paid",
-    Team: "$250.00",
+    Username: "Kaizens",
+    Sport: "Football",
+    Team: "Razorbacks",
     Badge: "PICTURE",
   },
   {
-    Username: "INV001",
-    Sport: "Paid",
-    Team: "$250.00",
+    Username: "Kaizens",
+    Sport: "Football",
+    Team: "Razorbacks",
     Badge: "PICTURE",
   },
   {
-    invoice: "INV004",
-    paymentStatus: "Paid",
-    totalAmount: "$450.00",
-    paymentMethod: "Credit Card",
+    Username: "Kaizens",
+    Sport: "Football",
+    Team: "Razorbacks",
+    Badge: "PICTURE",
   },
   {
-    invoice: "INV005",
-    paymentStatus: "Paid",
-    totalAmount: "$550.00",
-    paymentMethod: "PayPal",
+    Username: "Kaizens",
+    Sport: "Football",
+    Team: "Razorbacks",
+    Badge: "PICTURE",
   },
   {
-    invoice: "INV006",
-    paymentStatus: "Pending",
-    totalAmount: "$200.00",
-    paymentMethod: "Bank Transfer",
+    Username: "Kaizens",
+    Sport: "Football",
+    Team: "Razorbacks",
+    Badge: "PICTURE",
   },
   {
-    invoice: "INV007",
-    paymentStatus: "Unpaid",
-    totalAmount: "$300.00",
-    paymentMethod: "Credit Card",
+    Username: "Kaizens",
+    Sport: "Football",
+    Team: "Razorbacks",
+    Badge: "PICTURE",
   },
 ]
 
@@ -67,12 +66,12 @@ export default function Leaderboard () {
           </TableRow>
         </TableHeader>
         <TableBody>
-          {invoices.map((invoice) => (
-            <TableRow key={invoice.invoice}>
-              <TableCell className="font-medium">{invoice.invoice}</TableCell>
-              <TableCell>{invoice.paymentStatus}</TableCell>
-              <TableCell>{invoice.paymentMethod}</TableCell>
-              <TableCell className="text-right">{invoice.totalAmount}</TableCell>
+          {players.map((invoice) => (
+            <TableRow key={invoice.Username}>
+              <TableCell className="font-medium">{invoice.Username}</TableCell>
+              <TableCell>{invoice.Sport}</TableCell>
+              <TableCell>{invoice.Team}</TableCell>
+              <TableCell className="text-right">{invoice.Badge}</TableCell>
             </TableRow>
           ))}
         </TableBody>
