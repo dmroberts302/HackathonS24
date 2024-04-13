@@ -30,21 +30,41 @@ interface Opponent {
 
 import { useUser } from "@clerk/nextjs";
 import { useEffect } from 'react';
+import { supabase } from '../../utils/supabase'
 
 export default function Matchmaking() {
   const [selectedCardIndex, setSelectedCardIndex] = useState<number | null>(null);
-  const { isLoaded, isSignedIn, user } = useUser();
-  // const { firstName, setFirstName } = 
+  const [data, setPlayerData] = useState<any>();
+  const [team, setTeamData] = useState<any>();
+  const [firstName, setfirstName] = useState<any>();
+  const [lastName, setlastName] = useState<any>();
+  const { user } = useUser()
 
+  useEffect(() => {
+    setfirstName('Joe')
+    setlastName('Bergin')
+  }, [])
+  
+  
 
-  // useEffect(() => {
-  //   const firstName = user?.firstName
-  //   const lastName = user?.lastName
-  // }, []);
+  useEffect(() => {
+    const x = async () => {
+      setPlayerData(await supabase.from('player').select('*'));
+    }
+    x();
+    
+  
+  }, [])
 
-  // console.log(firstName)
-  // console.log("asdwdqqwdawd")
-
+  useEffect(() => {
+    const x = async () => {
+      setTeamData(await supabase.from('team').select('*'));
+    }
+    x();
+    
+  
+  }, [])
+  
   const opponents: Opponent[] = [
     { name: 'Steel Titans', elo: 450, location: 'Dallas', time: '7pm' },
     { name: 'Cosmic Chargers', elo: 480, location: 'Houston', time: '8pm' },
