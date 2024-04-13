@@ -10,78 +10,42 @@ import {
 
 import { supabase } from '../../utils/supabase'
 
-const players = [
-  {
-    Username: "dmr019",
-    Sport: "Soccer",
-    Team: "Onside",
-    Badge: "PICTURE",
-  },
-  {
-    Username: "Kaizens",
-    Sport: "Football",
-    Team: "Razorbacks",
-    Badge: "PICTURE",
-  },
-  {
-    Username: "Kaizens",
-    Sport: "Football",
-    Team: "Razorbacks",
-    Badge: "PICTURE",
-  },
-  {
-    Username: "Kaizens",
-    Sport: "Football",
-    Team: "Razorbacks",
-    Badge: "PICTURE",
-  },
-  {
-    Username: "Kaizens",
-    Sport: "Football",
-    Team: "Razorbacks",
-    Badge: "PICTURE",
-  },
-  {
-    Username: "Kaizens",
-    Sport: "Football",
-    Team: "Razorbacks",
-    Badge: "PICTURE",
-  },
-  {
-    Username: "Kaizens",
-    Sport: "Football",
-    Team: "Razorbacks",
-    Badge: "PICTURE",
-  },
-]
-
-
-
 export default async function Leaderboard () {
   const {data: teams} = await supabase.from('team').select('*')
-
+  teams.sort((a, b) => b.elo - a.elo);
     return (
+      <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '50vh', padding: '10vh'}}>
+      <div style={{ width: '80%', maxWidth: '1000px', textAlign: 'center', fontSize: '50px' }}>
+        <h1 className="scroll-m-20 text-6xl font-extrabold tracking-tight">Leaderboard</h1>
+        <div style={{ maxHeight: '400px', overflowY: 'auto', padding: '10px'}}></div>
       <Table>
-        <TableCaption>LEADERBOARD</TableCaption>
         <TableHeader>
           <TableRow>
-            <TableHead className="w-[100px]">Username</TableHead>
-            <TableHead>Sport</TableHead>
-            <TableHead>Team</TableHead>
-            <TableHead className="text-right">Badge</TableHead>
+            <TableHead className="text-left">Rank</TableHead>
+            <TableHead className="text-center">Team</TableHead>
+            <TableHead className="text-center">Sport</TableHead>
+            <TableHead className="text-center">Wins</TableHead>
+            <TableHead className="text-center">Losses</TableHead>
+            <TableHead className="text-center">ELO</TableHead>
+            <TableHead className="text-right">Location</TableHead>
           </TableRow>
         </TableHeader>
         <TableBody>
-          {teams.map((team) => (
+          {teams.map((team, index) => (
             <TableRow key={team.name}>
-              <TableCell className="font-medium">{team.name}</TableCell>
+              <TableCell className="text-left">{index + 1}</TableCell>
+              <TableCell className="font-medium text-center">{team.name}</TableCell>
               <TableCell>{team.sport}</TableCell>
               <TableCell>{team.wins}</TableCell>
+              <TableCell>{team.losses}</TableCell>
+              <TableCell>{team.elo}</TableCell>
               <TableCell className="text-right">{team.city}</TableCell>
             </TableRow>
           ))}
         </TableBody>
       </Table>
+      </div>
+      </div>
     )
   }
   
