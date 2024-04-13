@@ -18,61 +18,62 @@ import { PersonIcon } from "@radix-ui/react-icons";
 interface Player {
   Sport: string;
   Team: string;
-  Badge: string;
+  ELO: string;
 }
 
 const players = [
   {
-    Sport: "Soccer",
     Team: "Hawgs",
-    Badge: "PICTURE",
+    Sport: "Soccer",
+    ELO: "822",
   },
   {
     Team: "Patriots",
     Sport: "Basketball",
-    Badge: "PICTURE",
+    ELO: "322",
   },
   {
     Team: "Chargers",
     Sport: "Baseball",
-    Badge: "PICTURE",
+    ELO: "132",
   },
   {
     Team: "Lakers",
     Sport: "Tennis",
-    Badge: "PICTURE",
+    ELO: "981",
   },
   {
     Team: "Redhawks",
     Sport: "Golf",
-    Badge: "PICTURE",
+    ELO: "421",
   },
   {
     Team: "Titans",
     Sport: "Swimming",
-    Badge: "PICTURE",
+    ELO: "1100",
   },
   {
     Team: "Dragons",
     Sport: "Hockey",
-    Badge: "PICTURE",
+    ELO: "871",
   },
   {
     Team: "Cougars",
     Sport: "Track and Field",
-    Badge: "PICTURE",
+    ELO: "410",
   },
   {
     Team: "Thunder",
     Sport: "Volleyball",
-    Badge: "PICTURE",
+    ELO: "100",
   },
   {
     Team: "Bulldogs",
     Sport: "Rugby",
-    Badge: "PICTURE",
+    ELO: "123",
   },
 ];
+
 
 const Teams: React.FC = () => {
   const [selectedPlayer, setSelectedPlayer] = useState<Player | null>(null);
@@ -96,7 +97,7 @@ const Teams: React.FC = () => {
               <TableRow>
                 <TableHead className="text-left">Sport</TableHead>
                 <TableHead className="text-center">Team</TableHead>
-                <TableHead className="text-right">Badge</TableHead>
+                <TableHead className="text-right">ELO</TableHead>
               </TableRow>
             </TableHeader>
             <TableBody>
@@ -106,7 +107,7 @@ const Teams: React.FC = () => {
                     <TableRow key={index} style={{ height: '60px' }} onClick={() => handlePlayerClick(player)}>
                       <TableCell className="text-left" style={{ fontSize: '20px' }}>{player.Sport}</TableCell>
                       <TableCell className="text-center" style={{ fontSize: '20px' }}>{player.Team}</TableCell>
-                      <TableCell className="text-right" style={{ fontSize: '20px' }}>{player.Badge}</TableCell>
+                      <TableCell className="text-right" style={{ fontSize: '20px' }}>{player.ELO}</TableCell>
                     </TableRow>
                   </AlertDialogTrigger>
                   {selectedPlayer === player && (
@@ -131,7 +132,7 @@ const Teams: React.FC = () => {
             </TableBody>
           </Table>
         </div>
-        <Button><PersonIcon className="mr-2 h-6 w-6"/>Join a Team!</Button>
+        <Button><PersonIcon className="mr-2 h-6 w-6"/>Create a Team!</Button>
       </div>
     </div>
   );
