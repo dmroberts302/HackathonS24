@@ -7,7 +7,9 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table"
- 
+
+import { supabase } from '../../utils/supabase'
+
 const players = [
   {
     Username: "dmr019",
@@ -53,7 +55,11 @@ const players = [
   },
 ]
 
-export default function Leaderboard () {
+
+
+export default async function Leaderboard () {
+  const {data: teams} = await supabase.from('team').select('*')
+
     return (
       <Table>
         <TableCaption>LEADERBOARD</TableCaption>
@@ -66,12 +72,12 @@ export default function Leaderboard () {
           </TableRow>
         </TableHeader>
         <TableBody>
-          {players.map((invoice) => (
-            <TableRow key={invoice.Username}>
-              <TableCell className="font-medium">{invoice.Username}</TableCell>
-              <TableCell>{invoice.Sport}</TableCell>
-              <TableCell>{invoice.Team}</TableCell>
-              <TableCell className="text-right">{invoice.Badge}</TableCell>
+          {teams.map((team) => (
+            <TableRow key={team.name}>
+              <TableCell className="font-medium">{team.name}</TableCell>
+              <TableCell>{team.sport}</TableCell>
+              <TableCell>{team.wins}</TableCell>
+              <TableCell className="text-right">{team.city}</TableCell>
             </TableRow>
           ))}
         </TableBody>
