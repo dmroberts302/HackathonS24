@@ -70,7 +70,7 @@ console.log(players);
     return (
         <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100vh', padding: '10vh'}}>
           <div style={{ width: '80%', maxWidth: '1000px', textAlign: 'center', fontSize: '50px' }}>
-            <h2 >My Teams</h2>
+          <h1 className="scroll-m-20 text-6xl font-extrabold tracking-tight">My Teams</h1>
             <div style={{ maxHeight: '400px', overflowY: 'auto', padding: '10px'}}>
               <Table>
                 <TableHeader>

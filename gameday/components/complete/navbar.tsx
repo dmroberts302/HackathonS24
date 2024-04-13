@@ -1,3 +1,4 @@
+
 import {
     Menubar,
     MenubarCheckboxItem,
@@ -20,7 +21,7 @@ import Link from "next/link"
   export function Navbar() {
     return (
       <Menubar className="h-12">
-        <Link href="/dashboard">
+        <Link href="/profile">
           <Avatar>
             <AvatarImage src="" />
             <AvatarFallback>GD</AvatarFallback>

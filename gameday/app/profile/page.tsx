@@ -45,13 +45,13 @@ const EditProfilePage: React.FC = () => {
 
   return (
     <main className="flex min-h-screen flex-col items-center justify-start p-3">
-      <h1 className="scroll-m-20 text-9xl font-extrabold tracking-tight">
+      <h1 className="text-6xl font-extrabold tracking-tight">
         Edit Profile
       </h1>
       <div className="max-w-2xl p-10 text-center items-start mt-3 mb-20">
         <form onSubmit={handleSubmit} className="space-y-6">
           <div>
-            <label className="text-3xl font-semibold">Username:</label>
+            <label className="text-3xl font-semibold tracking-tight text-center mb-8">Username</label>
             <input
               type="text"
               name="username"
@@ -61,7 +61,7 @@ const EditProfilePage: React.FC = () => {
             />
           </div>
           <div>
-            <label className="text-3xl font-semibold">Email:</label>
+            <label className="text-3xl font-semibold">Email</label>
             <input
               type="email"
               name="email"
@@ -71,7 +71,7 @@ const EditProfilePage: React.FC = () => {
             />
           </div>
           <div>
-            <label className="text-3xl font-semibold">Location:</label>
+            <label className="text-3xl font-semibold">Location</label>
             <input
               type="text"
               name="location"
@@ -81,7 +81,7 @@ const EditProfilePage: React.FC = () => {
             />
           </div>
           <div>
-            <label className="text-3xl font-semibold">Bio:</label>
+            <label className="text-3xl font-semibold">Bio</label>
             <textarea
               name="bio"
               value={profile.bio}
