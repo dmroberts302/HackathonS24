@@ -46,6 +46,22 @@ export default function Matchmaking() {
         </p>
       </div>
       <div className="w-full max-w-6xl mx-auto">
+        <h2 className="text-3xl font-bold tracking-tight text-center mb-8">Your Stats</h2>
+        <div className='mb-7'>
+        <Card>
+          <CardHeader>
+            <CardTitle>Teamname</CardTitle>
+            <CardDescription>YOURTEAMNAME</CardDescription>
+            <CardTitle>Region</CardTitle>
+            <CardDescription>YOURREGION</CardDescription>
+            <CardTitle>ELO</CardTitle>
+            <CardDescription>YOURELO</CardDescription>
+            <CardTitle>Sport</CardTitle>
+            <CardDescription>YOURSPORT</CardDescription>
+          </CardHeader>
+        </Card>
+
+        </div>
         <h2 className="text-3xl font-bold tracking-tight text-center mb-8">Matches</h2>
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
           {/* Render cards for each opponent */}

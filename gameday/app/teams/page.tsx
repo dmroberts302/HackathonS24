@@ -17,52 +17,54 @@ import {
       Badge: "PICTURE",
     },
     {
-      Team: "Razorbacks",
-      Sport: "Football",
+      Team: "Patriots",
+      Sport: "Basketball",
       Badge: "PICTURE",
     },
     {
-        Team: "Razorbacks",
-        Sport: "Football",
-        Badge: "PICTURE",
-      },
-      {
-        Team: "Razorbacks",
-        Sport: "Football",
-        Badge: "PICTURE",
-      },
-      {
-        Team: "Razorbacks",
-        Sport: "Football",
-        Badge: "PICTURE",
-      },
-      {
-        Team: "Razorbacks",
-        Sport: "Football",
-        Badge: "PICTURE",
-      },
-      {
-        Team: "Razorbacks",
-        Sport: "Football",
-        Badge: "PICTURE",
-      },
-      {
-        Team: "Razorbacks",
-        Sport: "Football",
-        Badge: "PICTURE",
-      },
-      {
-        Team: "Razorbacks",
-        Sport: "Football",
-        Badge: "PICTURE",
-      },
-      {
-        Team: "Razorbacks",
-        Sport: "Football",
-        Badge: "PICTURE",
-      },
-  ]
-  
+      Team: "Chargers",
+      Sport: "Baseball",
+      Badge: "PICTURE",
+    },
+    {
+      Team: "Lakers",
+      Sport: "Tennis",
+      Badge: "PICTURE",
+    },
+    {
+      Team: "Redhawks",
+      Sport: "Golf",
+      Badge: "PICTURE",
+    },
+    {
+      Team: "Titans",
+      Sport: "Swimming",
+      Badge: "PICTURE",
+    },
+    {
+      Team: "Dragons",
+      Sport: "Hockey",
+      Badge: "PICTURE",
+    },
+    {
+      Team: "Cougars",
+      Sport: "Track and Field",
+      Badge: "PICTURE",
+    },
+    {
+      Team: "Thunder",
+      Sport: "Volleyball",
+      Badge: "PICTURE",
+    },
+    {
+      Team: "Bulldogs",
+      Sport: "Rugby",
+      Badge: "PICTURE",
+    },
+];
+
+console.log(players);
+
 
   export default function Teams() {
     return (
