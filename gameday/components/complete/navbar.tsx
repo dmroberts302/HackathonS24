@@ -22,7 +22,7 @@ import Link from "next/link"
       <Menubar className="h-12">
         <Link href="/dashboard">
           <Avatar>
-            <AvatarImage src="" />
+            <AvatarImage src="/Logo.jpg" />
             <AvatarFallback>GD</AvatarFallback>
           </Avatar>
         </Link>

@@ -49,28 +49,51 @@ export default function Matchmaking() {
     <main className="flex flex-col items-center justify-start p-3 min-h-screen bg-gray-100">
       <div className="max-w-2xl p-10 text-center items-start mt-3 mb-20">
         <h1 className="text-6xl font-extrabold tracking-tight">
-          Matchmake
+          Matchmaking
         </h1>
+        <div>
+        <Drawer>
+    <DrawerTrigger>
         <p className="mt-3 text-2xl text-gray-800">
-          Using our ELO system we'll find teams in the same location and set a date and time
+            Using our ELO system we'll find teams in the same location and set a date and time
         </p>
-      </div>
-      <div>
-          <Drawer>
-      <DrawerTrigger>Rank Explanation</DrawerTrigger>
-      <DrawerContent>
+    </DrawerTrigger>
+    <DrawerContent style={{ height: '500px' }}>
         <DrawerHeader>
-          <DrawerTitle>Are you absolutely sure?</DrawerTitle>
-          <DrawerDescription>This action cannot be undone.</DrawerDescription>
+            <DrawerTitle style={{ textAlign: 'center' }}>Ranks</DrawerTitle>
         </DrawerHeader>
+        <DrawerDescription style={{ marginTop: '20px', display: 'flex', flexWrap: 'wrap', justifyContent: 'center' }}>
+            <div style={{ textAlign: 'center', margin: '10px' }}>
+                <img src="/Rank1.JPG" alt="Image 1" style={{ width: '500px', height: 'auto' }} />
+                <p>Rookie: 0 - 300 ELO</p>
+            </div>
+            <div style={{ textAlign: 'center', margin: '10px' }}>
+                <img src="/Rank2.JPG" alt="Image 2" style={{ width: '500px', height: 'auto' }} />
+                <p>Semi-Pro: 301 - 600 ELO</p>
+            </div>
+            <div style={{ textAlign: 'center', margin: '10px' }}>
+                <img src="/Rank3.JPG" alt="Image 3" style={{ width: '500px', height: 'auto' }} />
+                <p>Professional: 601 - 900 ELO</p>
+            </div>
+            <div style={{ textAlign: 'center', margin: '10px' }}>
+                <img src="/Rank4.JPG" alt="Image 4" style={{ width: '500px', height: 'auto' }} />
+                <p>Elite: 901 - 1100 ELO</p>
+            </div>
+            <div style={{ textAlign: 'center', margin: '10px' }}>
+                <img src="/Rank5.JPG" alt="Image 5" style={{ width: '500px', height: 'auto' }} />
+                <p>Legend: 1101 + ELO</p>
+            </div>
+        </DrawerDescription>
         <DrawerFooter>
-          <DrawerClose>
-          </DrawerClose>
+            <DrawerClose />
         </DrawerFooter>
-      </DrawerContent>
-      </Drawer>
+    </DrawerContent>
+</Drawer>
+
       </div>
-      <div className="w-full max-w-6xl mx-auto">
+      </div>
+      
+      <div className="w-full max-w-6xl mx-auto mt-20">
         <h2 className="text-3xl font-bold tracking-tight text-center mb-8">Your Stats</h2>
         <div className='mb-7'>
         <Card>
