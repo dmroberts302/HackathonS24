@@ -18,7 +18,16 @@ import {
   DrawerTitle,
   DrawerTrigger,
 } from "@/components/ui/drawer"
-import {TeamPicker} from "@/components/complete/teampicker"
+
+import {
+  Popover,
+  PopoverContent,
+  PopoverTrigger,
+} from "@/components/ui/popover"
+import { Button } from '@/components/ui/button';
+
+
+
 
 interface Opponent {
   name: string;
@@ -31,13 +40,13 @@ export default function Matchmaking() {
   const [selectedCardIndex, setSelectedCardIndex] = useState<number | null>(null);
 
   const opponents: Opponent[] = [
-    { name: 'Steel Titans', elo: 450, location: 'Dallas', time: '7pm' },
-    { name: 'Cosmic Chargers', elo: 480, location: 'Houston', time: '8pm' },
-    { name: 'Mystic Mirage', elo: 420, location: 'Austin', time: '6pm' },
-    { name: 'Shadow Strikers', elo: 410, location: 'San Antonio', time: '7:30pm' },
-    { name: 'Phoenix Phantoms', elo: 470, location: 'Fort Worth', time: '6:30pm' },
-    { name: 'Celestial Sentinels', elo: 440, location: 'El Paso', time: '8:30pm' },
-    { name: 'Thunder Guardians', elo: 460, location: 'Plano', time: '7pm' },
+    { name: 'Steel Titans', elo: 450, location: 'Fayetteville', time: '7:00pm' },
+    { name: 'Cosmic Chargers', elo: 480, location: 'Fayetteville', time: '8:00pm' },
+    { name: 'Mystic Mirage', elo: 420, location: 'Fayetteville', time: '6:00pm' },
+    { name: 'Shadow Strikers', elo: 410, location: 'Fayetteville', time: '7:30pm' },
+    { name: 'Phoenix Phantoms', elo: 470, location: 'Fayetteville', time: '6:30pm' },
+    { name: 'Celestial Sentinels', elo: 440, location: 'Fayetteville', time: '8:30pm' },
+    { name: 'Thunder Guardians', elo: 460, location: 'Fayetteville', time: '7:00pm' },
     // Add more creatively named teams as needed
   ];
   
@@ -46,6 +55,9 @@ export default function Matchmaking() {
     setSelectedCardIndex(index === selectedCardIndex ? null : index);
   };
 
+  const handleChallengeClick = () => {
+    
+  }
   return (
     <main className="flex flex-col items-center justify-start p-3 min-h-screen bg-gray-100">
       <div className="max-w-2xl p-10 text-center items-start mt-3 mb-20">
@@ -99,14 +111,8 @@ export default function Matchmaking() {
         <div className='mb-7'>
         <Card>
           <CardHeader>
-            <CardTitle>Teamname</CardTitle>
-            <CardDescription>YOURTEAMNAME</CardDescription>
-            <CardTitle>Region</CardTitle>
-            <CardDescription>YOURREGION</CardDescription>
-            <CardTitle>ELO</CardTitle>
-            <CardDescription>YOURELO</CardDescription>
-            <CardTitle>Sport</CardTitle>
-            <CardDescription>YOURSPORT</CardDescription>
+            <CardTitle>Your Region</CardTitle>
+            <CardDescription>Fayetteville</CardDescription>
           </CardHeader>
         </Card>
         </div>
@@ -114,6 +120,8 @@ export default function Matchmaking() {
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
           {/* Render cards for each opponent */}
           {opponents.map((opponent: Opponent, index: number) => (
+            <Popover>
+              <PopoverTrigger>
             <Card
               key={index}
               className={`bg-white rounded-lg shadow-md cursor-pointer transition-opacity duration-300 ${
@@ -129,9 +137,18 @@ export default function Matchmaking() {
                 <p className="text-gray-700">{opponent.location}</p>
               </CardContent>
               <CardFooter>
-                <p className="text-gray-600">{opponent.time}</p>
+                <p className="text-gray-600 text-center">{opponent.time}</p>
               </CardFooter>
             </Card>
+              </PopoverTrigger>
+              <PopoverContent>
+                <h1>Challenge team?</h1>
+                <div className='flex space-x-3'>
+                  <Button variant={'outline'}>No</Button>
+                  <Button>Yes</Button>
+                </div>
+              </PopoverContent>
+            </Popover>
           ))}
         </div>
         
