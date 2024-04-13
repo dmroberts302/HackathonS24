@@ -18,9 +18,33 @@ function expectedScore(teamA, teamB) {
     return 1 / (1 + Math.pow(10, (teamB.eloRating - teamA.eloRating) / 400));
 }
 
+// Define significantlyHigher as a final constant
+Object.defineProperty(window, 'significantlyHigher', {
+    value: 800,
+    writable: false
+});
+
+// Define significantlySimilar as a final constant
+Object.defineProperty(window, 'significantlySimilar', {
+    value: 300,
+    writable: false
+});
+
+// Function to scale Elo ratings back to the range of 200
+function scaleElo(eloRating) {
+    // Define the original range (1500 - 200)
+    const originalRange = 1500 - 200;
+    
+    // Define the target range (new maximum - new minimum)
+    const targetRange = 200 - 0;
+    
+    // Scale the Elo rating to the target range
+    return ((eloRating - 1500) * targetRange) / originalRange + 200;
+}
+
 // Function to update Elo ratings for teams after a match
 function updateElo(teamA, teamB, outcome) {
-    const kFactor = 32; // Adjust this based on desired sensitivity
+    const kFactor = 32;
     const eloDifference = Math.abs(teamA.eloRating - teamB.eloRating);
 
     console.log(`Before update: Team A Elo: ${teamA.eloRating}, Team B Elo: ${teamB.eloRating}`);
@@ -28,10 +52,6 @@ function updateElo(teamA, teamB, outcome) {
     // Set initial Elo rating if team's Elo is 200 (no games played or new team)
     if (teamA.eloRating === 200) teamA.eloRating = 1500;
     if (teamB.eloRating === 200) teamB.eloRating = 1500;
-
-    // Adjusted significant difference values for Elo rating of 200
-    const significantlyHigher = 800; // Adjusted from 400
-    const significantlySimilar = 300; // Adjusted from 100
 
     // Case 1: Team A eloRating is significantly higher than Team B eloRating
     if (eloDifference > significantlyHigher) { 
@@ -101,6 +121,10 @@ function updateElo(teamA, teamB, outcome) {
         }
     }
 
+    // Scale Elo ratings back to the range of 200
+    teamA.eloRating = scaleElo(teamA.eloRating);
+    teamB.eloRating = scaleElo(teamB.eloRating);
+
     console.log(`After update: Team A Elo: ${teamA.eloRating}, Team B Elo: ${teamB.eloRating}`);
 }
 
@@ -115,5 +139,6 @@ function findMatch(team, pool) {
             bestMatch = opponent;
         }
     }
+    
     return bestMatch;
 }
