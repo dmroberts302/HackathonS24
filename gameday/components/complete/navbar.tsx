@@ -51,9 +51,15 @@ return (
       </MenubarContent>
     </MenubarMenu>
     <MenubarMenu>
-      <Link href="/matchmaking">
-        <MenubarTrigger>Matchmaking</MenubarTrigger>
-      </Link>
+    <MenubarTrigger>Matchmaking</MenubarTrigger>
+    <MenubarContent>
+        <Link href="/matchmaking">
+          <MenubarItem>Find a Match</MenubarItem>
+        </Link>
+        <Link href="/enter-match">
+        <MenubarItem>Enter Results</MenubarItem>
+        </Link>
+      </MenubarContent>
     </MenubarMenu>
   </Menubar>
 );
