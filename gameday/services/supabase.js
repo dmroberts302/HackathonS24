@@ -10,7 +10,7 @@ const fetchPlayerData = async () => {
         console.error('Error fetching player data:', error.message);
       } else {
         console.log('Player data:', players);
-        // Print player names
+        
         players.forEach(player => console.log('Player name:', player.name));
         return players;
       }
@@ -50,6 +50,5 @@ const fetchPlayerData = async () => {
       console.error('Error inserting player:', error.message);
     }
   };
-  
   
   module.exports = { insertPlayer, fetchPlayerData, fetchTeamData };

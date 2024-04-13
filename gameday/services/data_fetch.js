@@ -5,7 +5,6 @@ const fetchData = async () => {
   const players = await fetchPlayerData();
   const teams = await fetchTeamData();
 
-  
   console.log('Fetched players:', players);
   console.log('Fetched teams:', teams);
 };
