@@ -1,0 +1,14 @@
+.bioContainer {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .bioContainer label {
+    margin-bottom: 8px;
+  }
+  
+  .bioTextarea {
+    width: 100%;
+    height: 100px; /* Set the height of the textarea */
+  }
+  
