@@ -11,8 +11,9 @@ import {
 import { supabase } from '../../utils/supabase'
 
 export default async function Leaderboard () {
-  const {data: teams} = await supabase.from('team').select('*')
+  const {data: teams} = await supabase.from('team').select('')
   teams.sort((a, b) => b.elo - a.elo);
+  console.log(teams)
     return (
       <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '50vh', padding: '10vh'}}>
       <div style={{ width: '80%', maxWidth: '1000px', textAlign: 'center', fontSize: '50px' }}>
