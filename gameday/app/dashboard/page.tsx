@@ -1,4 +1,3 @@
-import { Navbar } from "@/components/complete/navbar";
 import {
   Card,
   CardContent,
@@ -12,8 +11,7 @@ import { Button } from "@/components/ui/button";
 export default function Dashboard() {
   return (
     <main className="flex min-h-screen flex-col items-center justify-start p-3">
-      {/* <Navbar /> */}
-      <div className="max-w-2xl p-10 text-center items-start mt-3 mb-20">
+      {/* <div className="max-w-2xl p-10 text-center items-start mt-3 mb-20">
         <h1 className="scroll-m-20 text-9xl font-extrabold tracking-tight">
           GameDay
         </h1>
@@ -60,8 +58,8 @@ export default function Dashboard() {
           <h2 className="mt-8 scroll-m-20 text-3xl font-semibold tracking-tight">Play hard</h2>
           <p className="leading-7 mt-3 max-w-md">Once you're in a team you'll be fed a schedule and placed against an opponent with similar skill level using our very own ELO system.</p>
         </div>
-      </div>
-
+      </div> */}
+      <h1>Dashboard has been moved to / the root directory</h1>
     </main>
   );
 }
