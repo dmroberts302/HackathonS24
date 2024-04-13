@@ -18,6 +18,7 @@ import {
   DrawerTitle,
   DrawerTrigger,
 } from "@/components/ui/drawer"
+import {TeamPicker} from "@/components/complete/teampicker"
 
 interface Opponent {
   name: string;
@@ -55,7 +56,7 @@ export default function Matchmaking() {
         <Drawer>
     <DrawerTrigger>
         <p className="mt-3 text-2xl text-gray-800">
-            Using our ELO system we'll find teams in the same location and set a date and time
+            Using our <span className='underline'>ELO system</span> we'll find teams in the same location and set a date and time
         </p>
     </DrawerTrigger>
     <DrawerContent style={{ height: '500px' }}>
@@ -92,9 +93,9 @@ export default function Matchmaking() {
 
       </div>
       </div>
-      
-      <div className="w-full max-w-6xl mx-auto mt-20">
-        <h2 className="text-3xl font-bold tracking-tight text-center mb-8">Your Stats</h2>
+      <div className="w-full max-w-6xl mx-auto">
+        <h2 className="text-3xl font-bold tracking-tight text-center mb-8">Your Stats NEED TO CHANGE TO PICKING YOUR TEAM THEN SHOW STATS</h2>
+        
         <div className='mb-7'>
         <Card>
           <CardHeader>
