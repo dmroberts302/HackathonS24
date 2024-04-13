@@ -20,19 +20,18 @@ import Link from "next/link"
   export function Navbar() {
     return (
       <Menubar className="h-12">
-        <Link href="/">
+        <Link href="/dashboard">
           <Avatar>
-            <AvatarImage src="https://cdn.sportsforecaster.com/players/l.nba.com/60900/head/no-background/web" />
-            <AvatarFallback>CN</AvatarFallback>
+            <AvatarImage src="" />
+            <AvatarFallback>GD</AvatarFallback>
           </Avatar>
         </Link>
         <MenubarMenu>
           <MenubarTrigger>Teams</MenubarTrigger>
           <MenubarContent>
-            <MenubarItem>Soccer</MenubarItem>
-            <MenubarItem>Basketball</MenubarItem>
-            <MenubarItem>Running</MenubarItem>
-            <MenubarItem>Volleyball</MenubarItem>
+            <Link href="/teams">
+            <MenubarItem>My Teams</MenubarItem>
+            </Link>
           </MenubarContent>
         </MenubarMenu>
         <MenubarMenu>
@@ -45,9 +44,15 @@ import Link from "next/link"
         <MenubarMenu>
           <MenubarTrigger>Leaderboard</MenubarTrigger>
           <MenubarContent>
+          <Link href="/leaderboard">
             <MenubarItem>Region</MenubarItem>
-            <MenubarItem>World</MenubarItem>
+          </Link>
           </MenubarContent>
+        </MenubarMenu>
+        <MenubarMenu>
+        <Link href="/matchmaking">
+          <MenubarTrigger>Matchmaking</MenubarTrigger>
+          </Link>
         </MenubarMenu>
       </Menubar>
     )

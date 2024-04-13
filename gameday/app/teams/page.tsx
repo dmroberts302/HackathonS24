@@ -7,7 +7,8 @@ import {
     TableHeader,
     TableRow,
   } from "@/components/ui/table"
-  
+  import { Button } from "@/components/ui/button"
+  import { PersonIcon } from "@radix-ui/react-icons"
   import React from 'react';
   const players = [
     {
@@ -16,59 +17,61 @@ import {
       Badge: "PICTURE",
     },
     {
-      Team: "Razorbacks",
-      Sport: "Football",
+      Team: "Patriots",
+      Sport: "Basketball",
       Badge: "PICTURE",
     },
     {
-        Team: "Razorbacks",
-        Sport: "Football",
-        Badge: "PICTURE",
-      },
-      {
-        Team: "Razorbacks",
-        Sport: "Football",
-        Badge: "PICTURE",
-      },
-      {
-        Team: "Razorbacks",
-        Sport: "Football",
-        Badge: "PICTURE",
-      },
-      {
-        Team: "Razorbacks",
-        Sport: "Football",
-        Badge: "PICTURE",
-      },
-      {
-        Team: "Razorbacks",
-        Sport: "Football",
-        Badge: "PICTURE",
-      },
-      {
-        Team: "Razorbacks",
-        Sport: "Football",
-        Badge: "PICTURE",
-      },
-      {
-        Team: "Razorbacks",
-        Sport: "Football",
-        Badge: "PICTURE",
-      },
-      {
-        Team: "Razorbacks",
-        Sport: "Football",
-        Badge: "PICTURE",
-      },
-  ]
-  
+      Team: "Chargers",
+      Sport: "Baseball",
+      Badge: "PICTURE",
+    },
+    {
+      Team: "Lakers",
+      Sport: "Tennis",
+      Badge: "PICTURE",
+    },
+    {
+      Team: "Redhawks",
+      Sport: "Golf",
+      Badge: "PICTURE",
+    },
+    {
+      Team: "Titans",
+      Sport: "Swimming",
+      Badge: "PICTURE",
+    },
+    {
+      Team: "Dragons",
+      Sport: "Hockey",
+      Badge: "PICTURE",
+    },
+    {
+      Team: "Cougars",
+      Sport: "Track and Field",
+      Badge: "PICTURE",
+    },
+    {
+      Team: "Thunder",
+      Sport: "Volleyball",
+      Badge: "PICTURE",
+    },
+    {
+      Team: "Bulldogs",
+      Sport: "Rugby",
+      Badge: "PICTURE",
+    },
+];
+
+console.log(players);
+
 
   export default function Teams() {
     return (
         <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100vh', padding: '10vh'}}>
           <div style={{ width: '80%', maxWidth: '1000px', textAlign: 'center', fontSize: '50px' }}>
             <h2 >My Teams</h2>
-            <div style={{ maxHeight: '400px', overflowY: 'auto' }}>
+            <div style={{ maxHeight: '400px', overflowY: 'auto', padding: '10px'}}>
               <Table>
                 <TableHeader>
                   <TableRow>
@@ -88,6 +91,7 @@ import {
                 </TableBody>
               </Table>
             </div>
+            <Button ><PersonIcon className="mr-2 h-6 w-6"/>Join a Team!</Button>
           </div>
         </div>
       );
