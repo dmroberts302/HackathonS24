@@ -26,9 +26,6 @@ import {
 } from "@/components/ui/popover"
 import { Button } from '@/components/ui/button';
 
-
-
-
 interface Opponent {
   name: string;
   elo: number;
@@ -36,43 +33,63 @@ interface Opponent {
   time: string;
 }
 
-
 import { useUser } from "@clerk/nextjs";
 import { useEffect } from 'react';
+import Link from 'next/link';
 
 export default function Matchmaking() {
   const [selectedCardIndex, setSelectedCardIndex] = useState<number | null>(null);
-  const { isLoaded, isSignedIn, user } = useUser();
-  // const { firstName, setFirstName } = 
-
-
-  // useEffect(() => {
-  //   const firstName = user?.firstName
-  //   const lastName = user?.lastName
-  // }, []);
-
-  // console.log(firstName)
-  // console.log("asdwdqqwdawd")
+  const [selectedOpponent, setSelectedOpponent] = useState<Opponent | null>(null);
+  const [upcomingMatches, setUpcomingMatches] = useState<Opponent[]>([]);
+  const [elo, setElo] = useState<number>(320);
 
   const opponents: Opponent[] = [
-    { name: 'Steel Titans', elo: 450, location: 'Fayetteville', time: '7:00pm' },
-    { name: 'Cosmic Chargers', elo: 480, location: 'Fayetteville', time: '8:00pm' },
-    { name: 'Mystic Mirage', elo: 420, location: 'Fayetteville', time: '6:00pm' },
-    { name: 'Shadow Strikers', elo: 410, location: 'Fayetteville', time: '7:30pm' },
+    { name: 'Steel Titans', elo: 450, location: 'UREC', time: '7:00pm' },
+    { name: 'Cosmic Chargers', elo: 480, location: 'Wilson Park', time: '8:00pm' },
+    { name: 'Mystic Mirage', elo: 420, location: 'Green Field', time: '6:00pm' },
+    { name: 'Shadow Strikers', elo: 410, location: 'Wilson Park', time: '7:30pm' },
     { name: 'Phoenix Phantoms', elo: 470, location: 'Fayetteville', time: '6:30pm' },
-    { name: 'Celestial Sentinels', elo: 440, location: 'Fayetteville', time: '8:30pm' },
-    { name: 'Thunder Guardians', elo: 460, location: 'Fayetteville', time: '7:00pm' },
+    { name: 'Celestial Sentinels', elo: 440, location: 'Green Field', time: '8:30pm' },
+    { name: 'Thunder Guardians', elo: 460, location: 'UREC', time: '7:00pm' },
     // Add more creatively named teams as needed
   ];
-  
+
 
   const handleCardClick = (index: number) => {
     setSelectedCardIndex(index === selectedCardIndex ? null : index);
+    setSelectedOpponent(opponents[index]); // Set the selected opponent
   };
 
   const handleChallengeClick = () => {
-    
-  }
+    if (selectedOpponent) {
+      setUpcomingMatches([...upcomingMatches, selectedOpponent]);
+      setSelectedCardIndex(null); // Reset selected card index
+      setSelectedOpponent(null); // Reset selected opponent
+    }
+  };
+
+  const handleOutcomeWinClick = () => {
+    if (selectedOpponent) {
+      setElo(elo + 20);
+      // Filter out the selected opponent from upcomingMatches
+      const updatedMatches = upcomingMatches.filter((match) => match !== selectedOpponent);
+      setUpcomingMatches(updatedMatches);
+      setSelectedCardIndex(null); // Reset selected card index
+      setSelectedOpponent(null); // Reset selected opponent
+    }
+  };
+
+  const handleOutcomeLoseClick = () => {
+    if (selectedOpponent) {
+      setElo(elo - 20);
+      // Filter out the selected opponent from upcomingMatches
+      const updatedMatches = upcomingMatches.filter((match) => match !== selectedOpponent);
+      setUpcomingMatches(updatedMatches);
+      setSelectedCardIndex(null); // Reset selected card index
+      setSelectedOpponent(null); // Reset selected opponent
+    }
+  };
+
   return (
     <main className="flex flex-col items-center justify-start p-3 min-h-screen bg-gray-100">
       <div className="max-w-2xl p-10 text-center items-start mt-3 mb-20">
@@ -121,21 +138,11 @@ export default function Matchmaking() {
       </div>
       </div>
       <div className="w-full max-w-6xl mx-auto">
-        <h2 className="text-3xl font-bold tracking-tight text-center mb-8">Your Stats NEED TO CHANGE TO PICKING YOUR TEAM THEN SHOW STATS</h2>
-        
-        <div className='mb-7'>
-        <Card>
-          <CardHeader>
-            <CardTitle>Your Region</CardTitle>
-            <CardDescription>Fayetteville</CardDescription>
-          </CardHeader>
-        </Card>
-        </div>
+          <h2 className="text-5xl font-bold tracking-tight text-center mb-4 underline"><Link href="/profile">Fayetteville {elo} </Link></h2>
         <h2 className="text-3xl font-bold tracking-tight text-center mb-8">Matches</h2>
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
-          {/* Render cards for each opponent */}
           {opponents.map((opponent: Opponent, index: number) => (
-            <Popover>
+            <Popover key={index}>
               <PopoverTrigger>
             <Card
               key={index}
@@ -159,14 +166,50 @@ export default function Matchmaking() {
               <PopoverContent>
                 <h1>Challenge team?</h1>
                 <div className='flex space-x-3'>
-                  <Button variant={'outline'}>No</Button>
-                  <Button>Yes</Button>
+                  <Button variant={'outline'} onClick={() => setSelectedCardIndex(null)}>No</Button>
+                  <Button onClick={handleChallengeClick}>Yes</Button>
                 </div>
               </PopoverContent>
             </Popover>
           ))}
         </div>
-        
+      </div>
+      {/* Render upcoming matches */}
+      <div className="mt-8">
+        <h2 className="text-3xl font-bold mb-4">Schedule:</h2>
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+          {upcomingMatches.map((opponent: Opponent, index: number) => (
+            <Popover key={index}>
+              <PopoverTrigger>
+            <Card
+              key={index}
+              className={`bg-white rounded-lg shadow-md cursor-pointer transition-opacity duration-300 ${
+                index === selectedCardIndex ? 'opacity-50' : ''
+              }`}
+              onClick={() => handleCardClick(index)}
+            >
+              <CardHeader>
+                <CardTitle className="text-lg font-semibold">{opponent.name}</CardTitle>
+                <CardDescription className="text-sm">ELO: {opponent.elo}</CardDescription>
+              </CardHeader>
+              <CardContent>
+                <p className="text-gray-700">{opponent.location}</p>
+              </CardContent>
+              <CardFooter>
+                <p className="text-gray-600 text-center">{opponent.time}</p>
+              </CardFooter>
+            </Card>
+              </PopoverTrigger>
+              <PopoverContent>
+                <h1>Did you Win or Lose?</h1>
+                <div className='flex space-x-3'>
+                  <Button variant={'outline'} onClick={handleOutcomeLoseClick}>Lose</Button>
+                  <Button onClick={handleOutcomeWinClick}>Win</Button>
+                </div>
+              </PopoverContent>
+            </Popover>
+          ))}
+        </div>
       </div>
     </main>
   );
