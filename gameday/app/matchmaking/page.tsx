@@ -41,7 +41,7 @@ export default function Matchmaking() {
   const [selectedCardIndex, setSelectedCardIndex] = useState<number | null>(null);
   const [selectedOpponent, setSelectedOpponent] = useState<Opponent | null>(null);
   const [upcomingMatches, setUpcomingMatches] = useState<Opponent[]>([]);
-  const [elo, setElo] = useState<number>(320);
+  const [elo, setElo] = useState<number>(1569);
 
   const opponents: Opponent[] = [
     { name: 'Steel Titans', elo: 450, location: 'UREC', time: '7:00pm' },
@@ -138,7 +138,31 @@ export default function Matchmaking() {
       </div>
       </div>
       <div className="w-full max-w-6xl mx-auto">
-          <h2 className="text-5xl font-bold tracking-tight text-center mb-4 underline"><Link href="/profile">Fayetteville {elo} </Link></h2>
+      <Card className='mb-10'>
+        <CardHeader className='flex flex-col'>
+          <div className="flex justify-evenly">
+            <div className="flex flex-col items-center">
+              <CardTitle>Team Name</CardTitle>
+              <CardDescription>Razorbacks</CardDescription>
+            </div>
+            <div className="flex flex-col items-center">
+              <CardTitle>Sport</CardTitle>
+              <CardDescription>Basketball</CardDescription>
+            </div>
+            <div className="flex flex-col items-center">
+              <CardTitle>Location</CardTitle>
+              <CardDescription>Fayetteville</CardDescription>
+            </div>
+            <div className="flex flex-col items-center">
+              <CardTitle>ELO</CardTitle>
+              <CardDescription>{elo}</CardDescription>
+            </div>
+          </div>
+        </CardHeader>
+        <div className='flex justify-center mb-5'>
+          <Button className='align-center'>Change Team</Button>
+        </div>
+      </Card>
         <h2 className="text-3xl font-bold tracking-tight text-center mb-8">Matches</h2>
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
           {opponents.map((opponent: Opponent, index: number) => (
