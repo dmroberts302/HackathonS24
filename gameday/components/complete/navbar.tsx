@@ -49,6 +49,11 @@ import Link from "next/link"
           </Link>
           </MenubarContent>
         </MenubarMenu>
+        <MenubarMenu>
+        <Link href="/matchmaking">
+          <MenubarTrigger>Matchmaking</MenubarTrigger>
+          </Link>
+        </MenubarMenu>
       </Menubar>
     )
   }
