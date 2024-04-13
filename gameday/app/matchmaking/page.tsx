@@ -27,8 +27,23 @@ interface Opponent {
   time: string;
 }
 
+
+import { useUser } from "@clerk/nextjs";
+import { useEffect } from 'react';
+
 export default function Matchmaking() {
   const [selectedCardIndex, setSelectedCardIndex] = useState<number | null>(null);
+  const { isLoaded, isSignedIn, user } = useUser();
+  // const { firstName, setFirstName } = 
+
+
+  // useEffect(() => {
+  //   const firstName = user?.firstName
+  //   const lastName = user?.lastName
+  // }, []);
+
+  // console.log(firstName)
+  // console.log("asdwdqqwdawd")
 
   const opponents: Opponent[] = [
     { name: 'Steel Titans', elo: 450, location: 'Dallas', time: '7pm' },
