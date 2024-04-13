@@ -7,7 +7,8 @@ import {
     TableHeader,
     TableRow,
   } from "@/components/ui/table"
-  
+  import { Button } from "@/components/ui/button"
+  import { PersonIcon } from "@radix-ui/react-icons"
   import React from 'react';
   const players = [
     {
@@ -68,7 +69,7 @@ import {
         <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100vh', padding: '10vh'}}>
           <div style={{ width: '80%', maxWidth: '1000px', textAlign: 'center', fontSize: '50px' }}>
             <h2 >My Teams</h2>
-            <div style={{ maxHeight: '400px', overflowY: 'auto' }}>
+            <div style={{ maxHeight: '400px', overflowY: 'auto', padding: '10px'}}>
               <Table>
                 <TableHeader>
                   <TableRow>
@@ -88,6 +89,7 @@ import {
                 </TableBody>
               </Table>
             </div>
+            <Button ><PersonIcon className="mr-2 h-6 w-6"/>Join a Team!</Button>
           </div>
         </div>
       );
